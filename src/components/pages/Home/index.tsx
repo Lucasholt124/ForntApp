@@ -14,13 +14,14 @@ const Home = () => {
               <h1>Conheça melhor catálogo do produto</h1>
               <p>Ajudaremos você a encontrar os melhores produtos disponíveis no mercado.</p>
             </div>
-            <Link to="/products">
-              <ButtonIcon/>
-            </Link>
+            <div>
+              <Link to="/products">
+                <ButtonIcon/>
+              </Link>
+            </div>
           </div>
           <div className="home-image-contenter">
             <MainImage />
-
           </div>
         </div>
       </div>
