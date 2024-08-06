@@ -1,22 +1,22 @@
 import { ReactComponent as MainImage} from 'assets/imagens/Desenho.svg';
-import Navbar from "components/Navbar";
 import './style.css';
 import ButtonIcon from 'components/ButtonIcon';
+import { Link } from 'react-router-dom';
 
 
 
 const Home = () => {
   return (
-    <>
-      <Navbar />
       <div className="home-container">
-        <div className="home-card">
+        <div className="home-card base-card">
           <div className="home-content-contenter">
             <div>
               <h1>Conheça melhor catálogo do produto</h1>
               <p>Ajudaremos você a encontrar os melhores produtos disponíveis no mercado.</p>
             </div>
-            <ButtonIcon/>
+            <Link to="/products">
+              <ButtonIcon/>
+            </Link>
           </div>
           <div className="home-image-contenter">
             <MainImage />
@@ -24,8 +24,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-    </>
   )
 }
 
