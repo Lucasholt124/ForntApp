@@ -1,6 +1,10 @@
 
 import type { Product } from 'types/product';
 import ProductCard from '../../ProductCard/index';
+import { Link } from 'react-router-dom';
+
+import './style.css';
+import Pagination from 'components/Pagination';
 
 
 const Catalogo = () => {
@@ -27,34 +31,55 @@ const Catalogo = () => {
 
   return (
     <>
-      <div className="container my-4">
+      <div className="container my-4  catalog-container">
+        <div className='row catalog-title-container'>
+          <h1>Catálogo de Produtos</h1>
+        </div>
         <div className="row">
           <div className="col-sm-6 col-lg-4 col-xl-3">
+            <Link to="/products/1">
+              <ProductCard product={product} />
+            </Link>
+          </div>
+          <div className="col-sm-6  col-lg-4 col-xl-3">
+          <Link to="/products/1">
             <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard  product={product} />
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard   product={product}/>
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard   product={product}/>
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard  product={product} />
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard   product={product}/>
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
           <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard   product={product}/>
-          </div>
-          <div className="col-sm-6  col-lg-4 col-xl-3">
-            <ProductCard   product={product}/>
+          <Link to="/products/1">
+            <ProductCard product={product} />
+          </Link>
           </div>
         </div>
-
+        <div className='row'>
+          <Pagination />
+        </div>
       </div>
     </>
   )
