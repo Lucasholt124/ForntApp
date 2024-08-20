@@ -1,7 +1,7 @@
 import { ReactComponent as ArrowIcon } from 'assets/imagens/Seta.svg';
 import ProductPrice from 'components/productPrice';
 
-import './style.css';
+
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import type { Product } from 'types/product';
@@ -9,6 +9,7 @@ import axios from 'axios';
 import { BASE_URL } from 'util/requests';
 import ProductLoading from './ProductLoading';
 import ProductLodinTwo from './ProductLodinTwo';
+import './style.css';
 
 type UrlParams = {
   productId: string;
