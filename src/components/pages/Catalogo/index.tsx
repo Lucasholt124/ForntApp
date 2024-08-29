@@ -4,23 +4,20 @@ import { Link } from 'react-router-dom';
 import Pagination from 'components/Pagination';
 import type { SpringPage } from 'types/vendor/spring';
 import { useEffect, useState } from 'react';
-import { BASE_URL } from 'util/requests';
-import axios from 'axios';
+import { requestBackend } from 'util/requests';
 import type { AxiosRequestConfig } from 'axios';
-import CardLoading from './CardLoading/index';
+import CardLoading from './CardLoading';
 
 import './style.css';
 
-
-
 const Catalogo = () => {
   const [page, setPage] = useState<SpringPage<Product>>();
-  const [ isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
       method: 'GET',
-      url: `${BASE_URL}/products`,
+      url: '/products',
       params: {
         page: 0,
         size: 12,
@@ -28,12 +25,13 @@ const Catalogo = () => {
     };
 
     setLoading(true);
-    axios(params).then((response) => {
-      setPage(response.data);
-    }).finally(() => {
-      setLoading(false);
-    });
-
+    requestBackend(params)
+      .then((response) => {
+        setPage(response.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -42,14 +40,17 @@ const Catalogo = () => {
         <h1>Catálogo de Produtos</h1>
       </div>
       <div className="row">
-        {isLoading ? <CardLoading/> : (
-            page?.content.map((product) => (
-          <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              <ProductCard product={product} />
-            </Link>
-          </div>
-        )))}
+        {isLoading ? (
+          <CardLoading />
+        ) : (
+          page?.content.map((product) => (
+            <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
+              <Link to={`/products/${product.id}`}>
+                <ProductCard product={product} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
       <div className="row">
         <Pagination />

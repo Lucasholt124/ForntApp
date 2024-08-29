@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import ProductDetails from 'components/pages/ProductDetails';
 import Admin from 'components/pages/Admin';
@@ -7,7 +7,7 @@ import Catalogo from 'components/pages/Catalogo';
 import Auth from 'components/pages/Admin/Auth';
 
 const AppRoutes = () => (
-  <BrowserRouter>
+  <Router>
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
@@ -19,15 +19,7 @@ const AppRoutes = () => (
       <Route path="/admin/*" element={<Admin />} />
       <Route path="/admin/products/:productId" element={<Admin />} />
     </Routes>
-  </BrowserRouter>
-
-
-
-
-
-
-
-
+  </Router>
 );
 
 export default AppRoutes;
