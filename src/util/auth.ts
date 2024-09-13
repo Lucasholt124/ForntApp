@@ -3,8 +3,10 @@ import { getTokenData } from './token';
 
 export const isAuthenticated = (): boolean => {
   const tokenData = getTokenData();
-  return tokenData && tokenData.exp * 1000 > Date.now() ? true : false;
+  return tokenData ? tokenData.exp * 1000 > Date.now() : false;
 };
+
+
 
 export const hasAnyRoles = (roles: Role[]): boolean => {
   if (roles.length === 0) {
@@ -13,9 +15,7 @@ export const hasAnyRoles = (roles: Role[]): boolean => {
 
   const tokenData = getTokenData();
 
-  if (tokenData !== undefined) {
-    return roles.some((role) => tokenData.authorities.includes(role));
-  }
-
-  return false;
+  return tokenData
+    ? roles.some((role) => tokenData.authorities.includes(role))
+    : false;
 };

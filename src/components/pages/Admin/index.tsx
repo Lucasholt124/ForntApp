@@ -4,12 +4,19 @@ import Users from './Users';
 import PrivateRouter from 'components/PrivateRouter';
 
 import './style.css';
+import Products from './Products';
 
-const AdminProducts = () => <h1>Product CRUD</h1>;
+const AdminProducts = () => Products();
 const AdminCategories = () => <h1>Category CRUD</h1>;
 const AdminUsers = () => <Users />;
 
-const Admin = () => {
+type Props = {
+  children: React.ReactNode;
+  roles?: string[];
+};
+
+
+const Admin = ({ children, roles }: Props) => {
   return (
     <div className="admin-container">
       <Navbar />
@@ -17,7 +24,7 @@ const Admin = () => {
         <Routes>
           <Route path="/admin/products" element={<PrivateRouter><AdminProducts /></PrivateRouter>} />
           <Route path="/admin/categories" element={<PrivateRouter><AdminCategories /></PrivateRouter>} />
-          <Route path="/admin/users" element={<PrivateRouter roles={['ROLE_ADMIN']}><AdminUsers /></PrivateRouter>} />
+          <Route path="/admin/users" element={<PrivateRouter roles={['ROLE_ADMIN'] }><AdminUsers /></PrivateRouter>} />
         </Routes>
       </div>
     </div>

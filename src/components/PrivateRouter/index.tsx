@@ -1,12 +1,14 @@
-import { Navigate, useLocation, Outlet } from 'react-router-dom';
-import { Role } from 'types/role';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import type { Role } from 'types/role';
 import { hasAnyRoles, isAuthenticated } from 'util/auth';
+import PrivateRouter from 'components/PrivateRouter';
 
 type Props = {
+  children: React.ReactNode;
   roles?: Role[];
 };
 
-const PrivateRoute = ({ roles = [] }: Props) => {
+const PrivateRoute = ({ children, roles = [] }: Props) => {
   const location = useLocation();
 
   if (!isAuthenticated()) {
@@ -23,7 +25,21 @@ const PrivateRoute = ({ roles = [] }: Props) => {
     return <Navigate to="/admin/products" replace />;
   }
 
-  return <Outlet />;
+  return <>{children}</>;
 };
 
-export default PrivateRoute;
+export const AppRoutes = ({ children }: Props) => (
+  <Routes>
+    <Route
+      path="/some-protected-route"
+      element={
+        <PrivateRouter roles={['ROLE_ADMIN'] } >
+          <h1>Some protected route</h1>
+        </PrivateRouter>
+      }
+    />
+    { children  }
+  </Routes>
+);
+
+export default PrivateRoute

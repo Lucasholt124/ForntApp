@@ -1,25 +1,36 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from 'components/Navbar';
-import ProductDetails from 'components/pages/ProductDetails';
-import Admin from 'components/pages/Admin';
 import Home from 'components/pages/Home';
-import Catalogo from 'components/pages/Catalogo';
+import ProductDetails from 'components/pages/ProductDetails';
 import Auth from 'components/pages/Admin/Auth';
+import Admin from 'components/pages/Admin';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Catalogo from 'components/pages/Catalogo';
 
-const AppRoutes = () => (
-  <Router>
+type Props = {
+  children?: React.ReactNode;
+};
+
+const AdminWrapper = ({ children }: Props) => (
+  <>
     <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Catalogo />} />
-      <Route path="/products/:productId" element={<ProductDetails />} />
-      <Route path="/admin/auth" element={<Navigate to="/admin/auth/login" />} />
-      <Route path="/admin/auth/*" element={<Auth />} />
-      <Route path="/admin" element={<Navigate to="/admin/products" />} />
-      <Route path="/admin/*" element={<Admin />} />
-      <Route path="/admin/products/:productId" element={<Admin />} />
-    </Routes>
+    <div className="admin-container">{children}</div>
+  </>
+);
+
+const RoutesComponent = ({ children }: Props) => (
+  <Router>
+    <AdminWrapper>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Catalogo />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/admin/auth" element={<Auth />} />
+        <Route path="/admin/*" element={<Admin roles={['ROLE_ADMIN']} children={children} />} />
+        <Route path="/admin/auth/login" element={<Navigate to="/admin/auth" replace />} />
+        <Route path="/admin/products" element={<Navigate to="/admin" replace />} />
+      </Routes>
+    </AdminWrapper>
   </Router>
 );
 
-export default AppRoutes;
+export default RoutesComponent;
