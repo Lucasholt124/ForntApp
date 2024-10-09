@@ -88,7 +88,7 @@
   }
 
   .home-content-contenter p {
-    width: 700px;
+    width: 800px;
     margin-bottom: 47px
   }
 
@@ -125,6 +125,7 @@
 
 @media (min-width: 1366px) {
   .home-image-contenter svg {
-    width: 480px;
+    width: 600px;
+
   }
 }

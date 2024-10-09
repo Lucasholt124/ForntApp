@@ -1,36 +1,24 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import Home from 'components/pages/Home';
-import ProductDetails from 'components/pages/ProductDetails';
-import Auth from 'components/pages/Admin/Auth';
+import Catalog from 'components/pages/Catalogo';
 import Admin from 'components/pages/Admin';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Catalogo from 'components/pages/Catalogo';
+import Auth from 'components/pages/Admin/Auth';
+import ProductDetails from 'components/pages/ProductDetails';
 
-type Props = {
-  children?: React.ReactNode;
-};
-
-const AdminWrapper = ({ children }: Props) => (
-  <>
-    <Navbar />
-    <div className="admin-container">{children}</div>
-  </>
-);
-
-const RoutesComponent = ({ children }: Props) => (
+const AppRoutes = () => (
   <Router>
-    <AdminWrapper>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Catalogo />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/admin/auth" element={<Auth />} />
-        <Route path="/admin/*" element={<Admin roles={['ROLE_ADMIN']} children={children} />} />
-        <Route path="/admin/auth/login" element={<Navigate to="/admin/auth" replace />} />
-        <Route path="/admin/products" element={<Navigate to="/admin" replace />} />
-      </Routes>
-    </AdminWrapper>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={<Catalog />} />
+      <Route path="/products/:productId" element={<ProductDetails />} />
+      <Route path="/admin/auth" element={<Auth />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/auth/login" element={<Navigate to="/admin/auth" />} />
+      <Route path="/admin/products" element={<Navigate to="/admin" />} />
+    </Routes>
   </Router>
 );
 
-export default RoutesComponent;
+export default AppRoutes;

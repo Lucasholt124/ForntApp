@@ -2515,6 +2515,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-paginate@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@types/react-paginate/-/react-paginate-7.1.4.tgz#b0c7fd53f4b3d65ff37a7c45d58d5741d84dc6ea"
+  integrity sha512-6fqZvDzRJHubOGl6c7cGFC9ysgQSWYy0Gpus9HjORpydlcXgPnT8x+aKgqwCdtpZrRTwcBz2Q7JWAOYaRrsXGg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^5.3.3":
   version "5.3.3"
   resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.3.tgz"
@@ -2531,6 +2538,13 @@
   dependencies:
     "@types/history" "^4.7.11"
     "@types/react" "*"
+
+"@types/react-select@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-5.0.1.tgz#04fc85edd34a72675a0ab56ad4c30428aab0e444"
+  integrity sha512-h5Im0AP0dr4AVeHtrcvQrLV+gmPa7SA0AGdxl2jOhtwiE6KgXBFSogWw8az32/nusE6AQHlCOHQWjP1S/+oMWA==
+  dependencies:
+    react-select "*"
 
 "@types/react-transition-group@^4.4.0":
   version "4.4.11"
@@ -9407,7 +9421,7 @@ promzard@^1.0.0:
   dependencies:
     read "^3.0.1"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -9524,6 +9538,11 @@ react-content-loader@^7.0.2:
   resolved "https://registry.npmjs.org/react-content-loader/-/react-content-loader-7.0.2.tgz"
   integrity sha512-773S98JTyC8VB2nu7LXUhpHx8tZMieGxMcx3qTe7IkohT6Br7d9AXnIXs/wQ6IhlUdKQcw6JLKk1QKigYCWDRA==
 
+react-currency-input-field@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/react-currency-input-field/-/react-currency-input-field-3.8.0.tgz#8b58d8e37ae00c86f43722bdb4a296d84703b19c"
+  integrity sha512-DKSIjacrvgUDOpuB16b+OVDvp5pbCt+s+RHJgpRZCHNhzg1yBpRUoy4fbnXpeOj0kdbwf5BaXCr2mAtxEujfhg==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -9586,6 +9605,13 @@ react-is@^18.0.0:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
+
+react-paginate@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.2.0.tgz#947c3dcb444a6c16c1bcf8361871aa135baa3dcd"
+  integrity sha512-sJCz1PW+9PNIjUSn919nlcRVuleN2YPoFBOvL+6TPgrH/3lwphqiSOgdrLafLdyLDxsgK+oSgviqacF4hxsDIw==
+  dependencies:
+    prop-types "^15"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -9662,10 +9688,10 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-select@^5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.8.0.tgz#bd5c467a4df223f079dd720be9498076a3f085b5"
-  integrity sha512-TfjLDo58XrhP6VG5M/Mi56Us0Yt8X7xD6cDybC7yoRMUNm7BGO7qk8J0TLQOua/prb8vUOtsfnXZwfm30HGsAA==
+react-select@*, react-select@^5.8.1:
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.8.1.tgz#3284a93b7633b5e893306b2a8007ea0f793e62b9"
+  integrity sha512-RT1CJmuc+ejqm5MPgzyZujqDskdvB9a9ZqrdnVLsvAHjJ3Tj0hELnLeVPQlmYdVKCdCpxanepl6z7R5KhXhWzg==
   dependencies:
     "@babel/runtime" "^7.12.0"
     "@emotion/cache" "^11.4.0"

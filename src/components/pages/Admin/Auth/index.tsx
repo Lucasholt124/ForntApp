@@ -1,11 +1,8 @@
-import { ReactComponent as AuthImage } from 'assets/imagens/Login.svg';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { ReactComponent as AuthImage } from 'assets/imagens/Desenho.svg';
+import { Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import './style.css';
 
-const AuthLogin = () => <Login />;
-const AuthSignup = () => <h1>Card de Signup</h1>;
-const AuthRecover = () => <h1>Card de Recover</h1>;
 
 const Auth = () => {
   return (
@@ -17,15 +14,13 @@ const Auth = () => {
       </div>
       <div className="auth-form-container">
         <Routes>
-          <Route path="/*" element={<div><Outlet /></div>}/>
-          <Route path="login" element={<AuthLogin />} />
-          <Route path="signup" element={<AuthSignup />} />
-          <Route path="recover" element={<AuthRecover />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<h1>Card de Signup</h1>} />
+          <Route path="recover" element={<h1>Card de Recover</h1>} />
         </Routes>
       </div>
     </div>
   );
-};
-
+}
 
 export default Auth;

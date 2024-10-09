@@ -1,62 +1,74 @@
-import type { Product } from 'types/product';
-import ProductCard from '../../ProductCard';
+import ProductCard from 'components/ProductCard';
+import { Product } from 'types/product';
 import { Link } from 'react-router-dom';
 import Pagination from 'components/Pagination';
-import type { SpringPage } from 'types/vendor/spring';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { SpringPage } from 'types/vendor/spring';
 import { requestBackend } from 'util/requests';
-import type { AxiosRequestConfig } from 'axios';
-import CardLoading from './CardLoading';
+import { AxiosRequestConfig } from 'axios';
+
+
 
 import './style.css';
+import CardLoading from './CardLoading';
 
-const Catalogo = () => {
+const Catalog = () => {
   const [page, setPage] = useState<SpringPage<Product>>();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const getProducts = (pageNumber: number) => {
     const params: AxiosRequestConfig = {
       method: 'GET',
       url: '/products',
       params: {
-        page: 0,
+        page: pageNumber,
         size: 12,
       },
     };
 
-    setLoading(true);
+    setIsLoading(true);
     requestBackend(params)
       .then((response) => {
         setPage(response.data);
       })
       .finally(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
+  }
+
+  useEffect(() => {
+    getProducts(0);
   }, []);
 
   return (
     <div className="container my-4 catalog-container">
       <div className="row catalog-title-container">
-        <h1>Catálogo de Produtos</h1>
+        <h1>Catálogo de produtos</h1>
       </div>
+
       <div className="row">
         {isLoading ? (
           <CardLoading />
         ) : (
           page?.content.map((product) => (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
-              <Link to={`/products/${product.id}`}>
+              <Link to="/products/1">
                 <ProductCard product={product} />
               </Link>
             </div>
           ))
         )}
       </div>
+
       <div className="row">
-        <Pagination />
+        <Pagination
+          pageCount={page ? page.totalPages : 0}
+          range={3}
+          onChange={getProducts}
+        />
       </div>
     </div>
   );
 };
 
-export default Catalogo;
+export default Catalog;
